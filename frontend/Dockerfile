@@ -4,6 +4,12 @@ FROM node:18 as build
 # Establece el directorio de trabajo
 WORKDIR /app
 
+# Definimos que Docker recibirá esta variable durante el build
+ARG VITE_API_URL
+
+# La convertimos en variable de entorno para que Vite la vea
+ENV VITE_API_URL=$VITE_API_URL
+
 # Copia los archivos necesarios
 COPY package*.json ./
 COPY . .

@@ -12,13 +12,15 @@ import os
 load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL")
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5173")
 
 app = FastAPI()
 
 # Configuración de CORS
 origins = [
     "http://localhost:3000",  # URL del frontend
-    "http://localhost:5173",  # URL del frontend
+    "http://localhost:5173",  # URL del frontend,
+    FRONTEND_URL
 ]
 
 app.add_middleware(

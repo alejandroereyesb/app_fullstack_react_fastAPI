@@ -7,11 +7,12 @@ function App() {
   const [newEntry, setNewEntry] = useState({ title: "", content: "", author_name: "" });
   const [updateEntry, setUpdateEntry] = useState({ id: "", title: "", content: "" });
 
-  const API_URL = "http://localhost:8000/api/entries";
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/api";
+  
 
   // Fetch all entries
   useEffect(() => {
-    fetch(API_URL)
+    fetch(`${API_URL}/entries`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Error fetching entries");
@@ -24,7 +25,7 @@ function App() {
 
   // Create a new entry
   const handleCreateEntry = () => {
-    fetch(API_URL, {
+    fetch(`${API_URL}/entries`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newEntry),
@@ -41,7 +42,7 @@ function App() {
 
   // Update an entry
   const handleUpdateEntry = () => {
-    fetch(`${API_URL}/${updateEntry.id}`, {
+    fetch(`${API_URL}/entries/${updateEntry.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title: updateEntry.title, content: updateEntry.content }),
@@ -62,7 +63,7 @@ function App() {
 
   // Delete an entry
   const handleDeleteEntry = (id) => {
-    fetch(`${API_URL}/${id}`, {
+    fetch(`${API_URL}/entries/${id}`, {
       method: "DELETE",
     })
       .then((response) => {
