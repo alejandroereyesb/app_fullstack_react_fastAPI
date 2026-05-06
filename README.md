@@ -16,13 +16,16 @@ Este proyecto es una aplicación fullstack que utiliza **FastAPI** para el backe
 .
 ├── backend/          # Código del backend (FastAPI)
 │   ├── Dockerfile    # Dockerfile para el backend
+    ├── .env          # Varianbles de entorno para el backend
 │   ├── main.py       # Punto de entrada de la API
 │   └── ...           # Otros archivos relacionados con el backend
 ├── frontend/         # Código del frontend (React)
 │   ├── Dockerfile    # Dockerfile para el frontend
+    ├── .env          # Varianbles de entorno para el frontend
 │   ├── src/          # Código fuente de React
 │   └── ...           # Otros archivos relacionados con el frontend
 ├── docker-compose.yml # Archivo para orquestar los contenedores
+├── .env # Variables de entorno para contenedor PostgreSQL local + URL api para el frontend
 └── README.md         # Documentación del proyecto
 ```
 

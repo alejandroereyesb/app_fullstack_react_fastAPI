@@ -25,7 +25,8 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    # allow_origins=origins, # Permitir solo las URLs especificadas
+    allow_origins=["*"],  # Permitir todas las URLs (no recomendado para producción)
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
